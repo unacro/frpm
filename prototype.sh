@@ -9,7 +9,7 @@ FRP_CONFIG_DIR="/etc/frp"
 FRP_BIN_PATH="/usr/bin"
 
 create_template() {
-    if [ ! -d "${FRP_CONFIG_DIR}/template"]
+    if [ ! -d "${FRP_CONFIG_DIR}/template"]; then
         mkdir -p "${FRP_CONFIG_DIR}/template"
     fi
     cat > "${FRP_CONFIG_DIR}/template/frpc_single_ssh.example.toml" << EOF
