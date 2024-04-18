@@ -41,19 +41,20 @@ curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
     frpc.toml
     frps.toml
 /usr
-  bin
-      frpc -> ../share/frp/frpc
-      frpm -> ../share/frp/frpm
-      frps -> ../share/frp/frps
-  share
-    frp 默认安装目录 `FRP_INSTALL_DIR`
-      cache 默认缓存目录 `FRP_CACHE_DIR`
-        frp_0.57.0_linux_amd64.tar.gz
-      releases
-        frp_0.57.0_linux_amd64
-          frpc
-          frps
-      frpc -> ./releases/frp_0.57.0_linux_amd64/frpc
-      frps -> ./releases/frp_0.57.0_linux_amd64/frps
-      frpm
+  local
+    bin
+        frpc -> ../share/frp/frpc
+        frpm -> ../share/frp/frpm
+        frps -> ../share/frp/frps
+    share
+      frp 默认安装目录 `FRP_INSTALL_DIR`
+        cache 默认缓存目录 `FRP_CACHE_DIR`
+          frp_0.57.0_linux_amd64.tar.gz
+        releases
+          frp_0.57.0_linux_amd64
+            frpc
+            frps
+        frpc -> ./releases/frp_0.57.0_linux_amd64/frpc
+        frps -> ./releases/frp_0.57.0_linux_amd64/frps
+        frpm
 ```
