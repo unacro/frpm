@@ -3,6 +3,20 @@
 - [Source Code](https://github.com/fatedier/frp)
 - [Documentation](https://gofrp.org/)
 
+## Usage
+
+```bash
+# 如果直连 GitHub 速度慢，可以设置 Github 镜像
+export GITHUB_PROXY_URL="https://mirror.ghproxy.com/"
+
+# 从源码运行
+git clone https://github.com/unacro/frpm.git && cd frpm
+bash install.sh && bash prototype.sh
+
+# 从国内镜像下载执行
+curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
+```
+
 ```goat
 /etc
   frp 默认配置目录 `FRP_CONFIG_DIR`

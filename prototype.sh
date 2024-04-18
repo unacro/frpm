@@ -153,12 +153,13 @@ reset_config() {
 }
 
 check_version() {
-    latest_release_info=$(curl -s "https://api.github.com/repos/${AUTHOR}/${REPO_NAME}/releases/latest")
+    latest_release_info=$(curl -s "${GITHUB_PROXY_URL}https://api.github.com/repos/${AUTHOR}/${REPO_NAME}/releases/latest")
     latest_release_version=$(echo "$latest_release_info" | jq -r '.tag_name' | sed s/^v//)
 }
 
 relink() {
     latest_release_name=$(echo $latest_release_file | sed 's/\.tar\.gz$//')
+    mkdir -p "${FRP_INSTALL_DIR}/releases"
     if [ -d "${FRP_INSTALL_DIR}/releases/${latest_release_name}" ]; then
         rm -rf "${FRP_INSTALL_DIR}/releases/${latest_release_name}"
     fi
