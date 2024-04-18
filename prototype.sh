@@ -9,9 +9,9 @@ FRP_CONFIG_DIR="/etc/frp"
 FRP_BIN_PATH="/usr/bin"
 
 create_template() {
-    mkdir -p "${FRP_CONFIG_DIR}/template"
-    mkdir -p "${FRP_CONFIG_DIR}/conf.d/client"
-    mkdir -p "${FRP_CONFIG_DIR}/conf.d/server"
+    if [ ! -d "${FRP_CONFIG_DIR}/template"]
+        mkdir -p "${FRP_CONFIG_DIR}/template"
+    fi
     cat > "${FRP_CONFIG_DIR}/template/frpc_single_ssh.example.toml" << EOF
 # frp Single Client Config
 
@@ -43,7 +43,7 @@ includes = [
 [auth]
 # token = "xxx" # same auth.token with frp server IF exist
 EOF
-    cat > "${FRP_INSTALL_DIR}/template/frpc_tcp_proxies.example.toml" << EOF
+    cat > "${FRP_CONFIG_DIR}/template/frpc_tcp_proxies.example.toml" << EOF
 # frp Client TCP Proxy Config
 
 [[proxies]]
@@ -54,7 +54,7 @@ type = "tcp"
 localPort = 80
 remotePort = 8080
 EOF
-    cat > "${FRP_INSTALL_DIR}/template/frpc_stcp_proxies.example.toml" << EOF
+    cat > "${FRP_CONFIG_DIR}/template/frpc_stcp_proxies.example.toml" << EOF
 # frp Client Secret TCP Proxy Config
 
 [[proxies]]
@@ -66,7 +66,7 @@ localPort = 80
 # secretKey = "$(openssl rand -base64 20 | tr -dc 'a-zA-Z0-9' | head -c 16)" # default: null
 # allowUsers = ["*"] # default: only allow visitors from the same client user
 EOF
-    cat > "${FRP_INSTALL_DIR}/template/frpc_stcp_visitors.example.toml" << EOF
+    cat > "${FRP_CONFIG_DIR}/template/frpc_stcp_visitors.example.toml" << EOF
 # frp Client Secret TCP Visitor Config
 
 [[visitors]]
@@ -135,7 +135,8 @@ EOF
 init() {
     mkdir -p "${FRP_INSTALL_DIR}"
     mkdir -p "${FRP_CACHE_DIR}"
-    mkdir -p "${FRP_CONFIG_DIR}"
+    mkdir -p "${FRP_CONFIG_DIR}/conf.d/client"
+    mkdir -p "${FRP_CONFIG_DIR}/conf.d/server"
     create_template
     if [ ! -f "${FRP_CONFIG_DIR}/frpc.toml" ]; then
         cp "${FRP_CONFIG_DIR}/template/frpc.example.toml" "${FRP_CONFIG_DIR}/frpc.toml"
