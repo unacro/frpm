@@ -3,8 +3,8 @@
 SCRIPT_VERSION="0.9.0"
 AUTHOR="fatedier"
 REPO_NAME="frp"
-FRP_INSTALL_DIR="/usr/share/frp"
-FRP_CACHE_DIR="/usr/share/frp/cache"
+FRP_INSTALL_DIR="/usr/local/share/frp"
+FRP_CACHE_DIR="/usr/local/share/frp/cache"
 FRP_CONFIG_DIR="/etc/frp"
 FRP_BIN_PATH="/usr/bin"
 
