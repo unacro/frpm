@@ -11,7 +11,7 @@ export GITHUB_PROXY_URL="https://mirror.ghproxy.com/"
 
 # 从源码运行
 git clone https://github.com/unacro/frpm.git && cd frpm
-bash install.sh && bash prototype.sh
+git pull && bash install.sh && bash prototype.sh
 
 # 从国内镜像下载执行
 curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
