@@ -91,7 +91,7 @@ EOF
 # frp Web Server Config
 
 [webServer]
-# addr = "0.0.0.0" # default: 127.0.0.1
+# addr = "127.0.0.1" # default: 127.0.0.1
 port = 7001
 # user = "admin"
 # password = "$(openssl rand -base64 12 | tr -dc 'a-zA-Z0-9' | head -c 32)"
@@ -107,9 +107,9 @@ Wants = network.target
 Type = simple
 Environment = "FRPC_SERVER_ADDR=192.168.1.1"
 Environment = "FRPC_SERVER_PORT=7000"
-ExecStart = ${FRP_BIN_PATH}/frpc -c ${FRP_CONFIG_DIR}/frpc.toml
-ExecReload = ${FRP_BIN_PATH}/frpc reload -c ${FRP_CONFIG_DIR}/frpc.toml
-WorkingDirectory = ${FRP_CONFIG_DIR}
+ExecStart = ${FRP_INSTALL_DIR}/frpc -c ${FRP_CONFIG_DIR}/frpc.toml
+ExecReload = ${FRP_INSTALL_DIR}/frpc reload -c ${FRP_CONFIG_DIR}/frpc.toml
+WorkingDirectory = ${FRP_INSTALL_DIR}
 
 [Install]
 WantedBy = multi-user.target
@@ -123,9 +123,9 @@ Wants = network.target
 
 [Service]
 Type = simple
-ExecStart = ${FRP_BIN_PATH}/frps -c ${FRP_CONFIG_DIR}/frps.toml
-ExecReload = ${FRP_BIN_PATH}/frps reload -c ${FRP_CONFIG_DIR}/frps.toml
-WorkingDirectory = ${FRP_CONFIG_DIR}
+ExecStart = ${FRP_INSTALL_DIR}/frps -c ${FRP_CONFIG_DIR}/frps.toml
+ExecReload = ${FRP_INSTALL_DIR}/frps reload -c ${FRP_CONFIG_DIR}/frps.toml
+WorkingDirectory = ${FRP_INSTALL_DIR}
 
 [Install]
 WantedBy = multi-user.target

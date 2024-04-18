@@ -14,6 +14,7 @@ git clone https://github.com/unacro/frpm.git && cd frpm
 git pull && bash install.sh && bash prototype.sh
 
 # 从国内镜像下载执行
+mkdir -p /usr/local/share/frp && cd /usr/local/share/frp
 curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
 ```
 
