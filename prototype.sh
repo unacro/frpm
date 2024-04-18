@@ -221,7 +221,7 @@ configure_client() {
     read new_server_token
     if [ -n "$new_server_token" ]; then
         # sed -i "s/^(auth\.|#)?\s*token\s*=.*$/token = ${new_server_token}/" "${FRP_CONFIG_DIR}/frpc.toml" # todo 严格正则未通过
-        sed -i "/\[auth\]/{n;s/.*token\s*=.*/token = \"${FRP_CONFIG_DIR}\"/}" "${FRP_CONFIG_DIR}/frpc.toml"
+        sed -i "/\[auth\]/{n;s/.*token\s*=.*/token = \"${new_server_token}\"/}" "${FRP_CONFIG_DIR}/frpc.toml"
     fi
     echo "已更新配置"
 }
