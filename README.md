@@ -57,5 +57,5 @@ curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
              │     └─frps
              ├─frpc -> ./releases/frp_0.57.0_linux_amd64/frpc
              ├─frps -> ./releases/frp_0.57.0_linux_amd64/frps
-             └─frpm
+             └─frpm -> ${REPO_DIR}/frpm/prototype.sh
 ```
