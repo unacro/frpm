@@ -1,5 +1,7 @@
 # frpm - frp Manager
 
+> 一键安装 / 更新 / 配置 frp
+
 ## Library - frp
 
 - [Source Code](https://github.com/fatedier/frp)
@@ -17,7 +19,7 @@ $ git pull && bash install.sh && bash prototype.sh
 
 # 从国内镜像下载并执行脚本
 $ mkdir -p /usr/local/share/frp && cd /usr/local/share/frp
-$ curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
+$ curl -fsSLO osrp.run/frpm && chmod +x frpm && ./frpm
 ```
 
 ## File structure
@@ -70,13 +72,13 @@ $ curl -fsSLO https://osrp.run/frpm && chmod +x frpm && ./frpm
 - [ ] 使用 Go 重构（编译为单文件可执行程序）
    1. 每次启动时自动检查 _frpm_ 更新情况（还是手动 `frpm update`？）
    2. 每次启动时自动检查 _frp_ 更新情况
-   3. 下载最新版 _frp_ 到 `FRP_CACHE_DIR` 并 **即时显示进度条**
-   4. 下载完成后解压可执行文件（`frps` / `frpc`）到 `FRP_INSTALL_DIR`
-   5. 配置文件放在 `FRP_CONFIG_DIR`
-   6. 支持快速配置 `frpm config frpc "frps_ip:frps_port?auth_token"`\
-      （参考解析用正则 `^(?<url>[\w\.]+):(?<port>\d+)(\?(?<token>\w+))?$`）
+   3. 下载最新版 _frp_ 到 `$FRP_CACHE_DIR` 并 **即时显示进度条**
+   4. 下载完成后解压可执行文件（`frps` / `frpc`）到 `$FRP_INSTALL_DIR`
+   5. 配置文件放在 `$FRP_CONFIG_DIR`
+   6. 支持快速配置 `frpm config frpc "frps_host:frps_port?auth_token"`\
+      （参考解析用正则 `^(?<host>[\w\.]+):(?<port>\d+)(\?(?<token>\w+))?$`）
    7. 运行 `frpm` 进入 TUI（交互式命令行界面）
-   8. 运行 `frpm client` 直接运行 frpc 重定向 stdout 到当前窗口
-   9. 运行 `frpm server --slient` 后台运行 frps
-   10. 缓存目录 `FRP_CACHE_DIR` & 配置目录 `FRP_CONFIG_DIR` 可在 `$FRP_INSTALL_DIR/.env` 中手动配置\
-      （安装目录 `FRP_INSTALL_DIR` 只能使用环境变量）
+   8. 运行 `frpm client` 直接运行 `frpc` 重定向 `stdout` 到当前窗口
+   9. 运行 `frpm server --slient` 后台运行 `frps`
+   10. 缓存目录 `$FRP_CACHE_DIR` & 配置目录 `$FRP_CONFIG_DIR` 可在 `$FRP_INSTALL_DIR/.env` 中手动配置\
+      （安装目录 `$FRP_INSTALL_DIR` 只能使用环境变量）
