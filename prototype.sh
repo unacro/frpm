@@ -3,10 +3,16 @@
 SCRIPT_VERSION="0.9.0"
 AUTHOR="fatedier"
 REPO_NAME="frp"
+if [ -z "$FRP_CACHE_DIR" ]; then
+    FRP_CACHE_DIR="/usr/local/share/frp/cache"
+fi
+if [ -z "$FRP_INSTALL_DIR" ]; then
+    FRP_INSTALL_DIR="/usr/local/share/frp"
+fi
 FRP_BIN_PATH="/usr/local/bin"
-FRP_INSTALL_DIR="/usr/local/share/frp"
-FRP_CACHE_DIR="/usr/local/share/frp/cache"
-FRP_CONFIG_DIR="/etc/frp"
+if [ -z "$FRP_CONFIG_DIR" ]; then
+    FRP_CONFIG_DIR="/etc/frp"
+fi
 
 create_template() {
     if [[ ! -d "${FRP_CONFIG_DIR}/template" ]]; then
@@ -34,7 +40,7 @@ user = "$(head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)"
 serverAddr = "{{ .Envs.FRPC_SERVER_ADDR }}"
 serverPort = {{ .Envs.FRPC_SERVER_PORT }}
 includes = [
-    "${FRP_CONFIG_DIR}/conf.d/client/web_server.toml",
+    "${FRP_CONFIG_DIR}/conf.d/client/meta_web_server.toml",
     "${FRP_CONFIG_DIR}/conf.d/client/proxy_*.toml",
     "${FRP_CONFIG_DIR}/conf.d/client/visitor_*.toml"
 ] # default: only this config file
@@ -133,8 +139,12 @@ EOF
 }
 
 init() {
-    mkdir -p "${FRP_INSTALL_DIR}"
+    if [ ! command -v curl &> /dev/null || ! command -v jq &> /dev/null ]; then
+        echo "请先安装依赖库 \033[1;36mcurl & jq\033[0m"
+        sudo apt-get install -y curl jq
+    fi
     mkdir -p "${FRP_CACHE_DIR}"
+    mkdir -p "${FRP_INSTALL_DIR}"
     mkdir -p "${FRP_CONFIG_DIR}/conf.d/client"
     mkdir -p "${FRP_CONFIG_DIR}/conf.d/server"
     create_template

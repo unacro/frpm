@@ -27,7 +27,7 @@ $ curl -fsSLO osrp.run/frpm && chmod +x frpm && ./frpm
 ```goat
 /
  ├─etc
- │  └─frp 默认配置目录 `FRP_CONFIG_DIR`
+ │  └─frp # 默认配置目录 `FRP_CONFIG_DIR`
  │     ├─conf.d
  │     │  ├─client
  │     │  │  ├─meta_web_server.toml
@@ -37,15 +37,15 @@ $ curl -fsSLO osrp.run/frpm && chmod +x frpm && ./frpm
  │     │  └─server
  │     │     └─meta_web_server.toml
  │     ├─template
- │     │  ├─frpc.example.toml
- │     │  ├─frpc_single_ssh.example.toml
- │     │  ├─frpc_tcp_proxies.example.toml
- │     │  ├─frpc_stcp_proxies.example.toml
- │     │  ├─frpc_stcp_visitors.example.toml
- │     │  ├─frpc.example.service
- │     │  ├─frps.example.toml
- │     │  ├─frps.example.service
- │     │  └─meta_web_server.example.toml
+ │     │  ├─frpc.example.toml # 示例默认客户端配置
+ │     │  ├─frpc_single_ssh.example.toml # 示例单文件客户端配置
+ │     │  ├─frpc_tcp_proxies.example.toml # 示例客户端独立 tcp 代理配置
+ │     │  ├─frpc_stcp_proxies.example.toml # 示例客户端独立 stcp 代理配置
+ │     │  ├─frpc_stcp_visitors.example.toml # 示例客户端独立 stcp 访问者配置
+ │     │  ├─frpc.example.service # 示例默认客户端后台服务
+ │     │  ├─frps.example.toml # 示例默认服务端配置
+ │     │  ├─frps.example.service # 示例默认服务端后台服务
+ │     │  └─meta_web_server.example.toml # 示例通用 Web 界面独立配置
  │     ├─frpc.toml
  │     └─frps.toml
  └─usr
@@ -55,8 +55,8 @@ $ curl -fsSLO osrp.run/frpm && chmod +x frpm && ./frpm
        │  ├─frpm -> ../share/frp/frpm
        │  └─frps -> ../share/frp/frps
        └─share
-          └─frp 默认安装目录 `FRP_INSTALL_DIR`
-             ├─cache 默认缓存目录 `FRP_CACHE_DIR`
+          └─frp # 默认安装目录 `FRP_INSTALL_DIR`
+             ├─cache # 默认缓存目录 `FRP_CACHE_DIR`
              │  └─frp_0.57.0_linux_amd64.tar.gz
              ├─releases
              │  └─frp_0.57.0_linux_amd64
@@ -64,7 +64,7 @@ $ curl -fsSLO osrp.run/frpm && chmod +x frpm && ./frpm
              │     └─frps
              ├─frpc -> ./releases/frp_0.57.0_linux_amd64/frpc
              ├─frps -> ./releases/frp_0.57.0_linux_amd64/frps
-             └─frpm 本应用实际存在的位置
+             └─frpm # 本应用实际存在的位置
 ```
 
 ## Todo
