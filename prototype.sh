@@ -163,7 +163,7 @@ reset_config() {
 }
 
 check_version() {
-    latest_release_info=$(curl -s "${GITHUB_PROXY_URL}https://api.github.com/repos/${AUTHOR}/${REPO_NAME}/releases/latest")
+    latest_release_info=$(curl -s "https://api.github.com/repos/${AUTHOR}/${REPO_NAME}/releases/latest")
     latest_release_version=$(echo "$latest_release_info" | jq -r '.tag_name' | sed s/^v//)
 }
 
@@ -190,7 +190,7 @@ upgrade() {
     if [ -f "${FRP_CACHE_DIR}/${latest_release_file}" ]; then
         echo "Use cache ${FRP_CACHE_DIR}/${latest_release_file}"
     else
-        wget -P "${FRP_CACHE_DIR}" $download_url
+        wget -P "${FRP_CACHE_DIR}" "${GITHUB_PROXY_URL}${download_url}"
     fi
     if [ -f "${FRP_CACHE_DIR}/${latest_release_file}" ]; then
         relink
