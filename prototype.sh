@@ -4,14 +4,14 @@ SCRIPT_VERSION="0.9.0"
 AUTHOR="fatedier"
 REPO_NAME="frp"
 if [ -z "$FRP_CACHE_DIR" ]; then
-    FRP_CACHE_DIR="/usr/local/share/frp/cache"
+    FRP_CACHE_DIR="/usr/local/lib/frp/cache"
 fi
 if [ -z "$FRP_INSTALL_DIR" ]; then
-    FRP_INSTALL_DIR="/usr/local/share/frp"
+    FRP_INSTALL_DIR="/usr/local/lib/frp"
 fi
 FRP_BIN_PATH="/usr/local/bin"
 if [ -z "$FRP_CONFIG_DIR" ]; then
-    FRP_CONFIG_DIR="/etc/frp"
+    FRP_CONFIG_DIR="/usr/local/etc/frp"
 fi
 
 create_template() {
@@ -76,7 +76,7 @@ EOF
 # frp Client Secret TCP Visitor Config
 
 [[visitors]]
-name = "a_stcp_vistor"
+name = "a_stcp_visitor"
 type = "stcp"
 # secretKey = "" # same secretKey at stcp proxy IF exist
 # serverUser = "" # default: current client user

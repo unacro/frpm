@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_PATH="/usr/local/share/frp"
+APP_PATH="/usr/local/lib/frp"
 mkdir -p "${APP_PATH}"
 rm -f "${APP_PATH}/frpm"
 cat > "${APP_PATH}/frpm" << EOF
