@@ -11,7 +11,8 @@
 
 ```bash
 # 如果直连 GitHub 速度堪忧, 可以 *为本脚本* 设置 Github 镜像
-$ export GITHUB_PROXY_URL="https://mirror.ghproxy.com/"
+$ GITHUB_PROXY_URL="https://ghgo.xyz/" frpm
+# 或直接将 `export GITHUB_PROXY_URL="https://ghgo.xyz/"` 写入 `~/.bashrc`
 
 # clone 后从源码运行脚本
 $ git clone https://github.com/unacro/frpm.git && cd frpm

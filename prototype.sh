@@ -239,13 +239,13 @@ configure_client() {
 reload_client() {
     export FRPC_SERVER_ADDR="$(awk -F= '/FRPC_SERVER_ADDR/ {gsub(/"/,"",$3); print $3}' /etc/systemd/system/frpc.service)"
     export FRPC_SERVER_PORT="$(awk -F= '/FRPC_SERVER_PORT/ {gsub(/"/,"",$3); print $3}' /etc/systemd/system/frpc.service)"
-    ${FRP_INSTALL_DIR}/frpc reload -c ${FRP_INSTALL_DIR}/frpc.toml
+    ${FRP_INSTALL_DIR}/frpc reload -c ${FRP_CONFIG_DIR}/frpc.toml
 }
 
 check_client() {
     export FRPC_SERVER_ADDR="$(awk -F= '/FRPC_SERVER_ADDR/ {gsub(/"/,"",$3); print $3}' /etc/systemd/system/frpc.service)"
     export FRPC_SERVER_PORT="$(awk -F= '/FRPC_SERVER_PORT/ {gsub(/"/,"",$3); print $3}' /etc/systemd/system/frpc.service)"
-    ${FRP_INSTALL_DIR}/frpc status -c ${FRP_INSTALL_DIR}/frpc.toml
+    ${FRP_INSTALL_DIR}/frpc status -c ${FRP_CONFIG_DIR}/frpc.toml
 }
 
 main() {
